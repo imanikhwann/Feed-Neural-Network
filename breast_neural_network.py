@@ -60,3 +60,27 @@ BATCH_SIZE = 32
 history = model.fit(x_train_sc, y_train, validation_data = (x_test_sc, y_test), epochs=EPOCH, batch_size = BATCH_SIZE)
 
 #%%
+
+import matplotlib.pyplot as plt
+
+train_loss = history.history["loss"]
+val_loss = history.history["val_loss"]
+train_acc = history.history["accuracy"]
+val_acc = history.history["val_accuracy"]
+epochs = history.epoch
+
+plt.plot(epochs, train_loss, label="Training loss")
+plt.plot(epochs, val_loss, label="Validation loss")
+plt.title("Training vs Validation loss")
+plt.legend()
+plt.figure()
+
+plt.plot(epochs, train_acc, label="Training accuracy")
+plt.plot(epochs, val_acc, label="Validation accuracy")
+plt.title("Training vs Validation accuracy")
+plt.legend()
+plt.figure()
+
+plt.show()
+
+#%%
